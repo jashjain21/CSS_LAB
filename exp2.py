@@ -1,4 +1,19 @@
 from math import sqrt
+def findPrimitive( n) :
+    s = set()
+    if (isPrime(n) == False):
+        return -1
+    phi = n - 1
+    findPrimefactors(s, phi)
+    for r in range(2, phi + 1):
+        flag = False
+        for it in s:
+            if (power(r, phi // it, n) == 1):
+                flag = True
+                break
+        if (flag == False):
+            return r
+    return -1
 
 def prime_checker(n):
     g_or_not = 0
@@ -22,8 +37,8 @@ def diffie_hellman():
     if not prime_checker(n):
         n = int(input("ERR!!! Number not Prime -- Try again: "))
 
-    x = int(input('\nSecret X(Alice): '))
-    y = int(input('Secret Y(Bob): '))
+    x = int(input('\nSecret X(A): '))
+    y = int(input('Secret Y(B): '))
     
     X_alice = int(pow(n,x,g)) 
     X_bob = int(pow(n,y,g))
@@ -39,3 +54,10 @@ def diffie_hellman():
 
 if __name__  == '__main__':
     diffie_hellman()
+
+
+#5915587277
+#9576890767
+
+#2379301732
+#9842084289
